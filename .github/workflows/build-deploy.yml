@@ -11,6 +11,8 @@ on:
       commit:
         description: "commit that was built/deployed"
         value: ${{ jobs.build.outputs.commit }}
+  workflow_dispatch:
+  pull_request:
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: launchableinc/test-repo1
+          repository: launchableinc/test-repo2
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Python 3.10
